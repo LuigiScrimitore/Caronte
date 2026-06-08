@@ -2,6 +2,7 @@ import { Outlet, NavLink } from 'react-router-dom';
 import { useAppStore } from '../../store/useAppStore';
 import { LayoutDashboard, Network, PlaySquare, FileText, Menu, Moon, Sun } from 'lucide-react';
 import clsx from 'clsx';
+import logoUrl from '../../assets/caronte_logo.png';
 
 export default function MainLayout() {
   const { isSidebarOpen, toggleSidebar, theme, toggleTheme, activeProjectId, setActiveProjectId, projects } = useAppStore();
@@ -25,9 +26,12 @@ export default function MainLayout() {
       >
         <div className="h-14 flex items-center justify-between px-4 border-b border-gray-200 dark:border-[#27272a]">
           {isSidebarOpen && (
-            <span className="font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-teal-700">
-              CARONTE
-            </span>
+            <div className="flex items-center gap-2">
+              <img src={logoUrl} alt="Caronte Logo" className="w-8 h-8 object-contain" />
+              <span className="font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-teal-700">
+                CARONTE
+              </span>
+            </div>
           )}
           <button onClick={toggleSidebar} className="text-gray-500 hover:text-teal-500">
             <Menu size={20} />

@@ -1,6 +1,10 @@
 # Caronte
 
-![Caronte](https://img.shields.io/badge/Caronte-Data_Ingestion-teal?style=for-the-badge)
+<div align="center">
+  <img src="caronte_logo.png" alt="Caronte Logo" width="200"/>
+  <br/>
+  <img src="https://img.shields.io/badge/Caronte-Data_Ingestion-teal?style=for-the-badge" alt="Caronte Badge" />
+</div>
 
 Caronte è un hub/gateway centralizzato ad alte prestazioni sviluppato per l'automazione della **data ingestion massiva**. È progettato per orchestrare l'estrazione parallela di dati da sistemi transazionali (es. Oracle) e il trasferimento verso Data Warehouse, Cloud Storage (es. Azure Blob) o server SFTP.
 
