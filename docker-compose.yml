@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  caronte-gateway:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: caronte_gateway
+    ports:
+      - "8000:8000"
+    volumes:
+      # Montiamo la cartella backend come volume per mantenere il database SQLite persistente
+      # tra i vari riavvii o ricreazioni del container.
+      # Creiamo un volume nominato per i dati persistenti per non sporcare il codice locale
+      - caronte_data:/app/backend/data
+    environment:
+      # Eventuali variabili d'ambiente (es. connection string di Azure)
+      - AZURE_STORAGE_CONNECTION_STRING=your_connection_string_here
+      - TZ=Europe/Rome
+      - SMTP_SERVER=mailpit
+      - SMTP_PORT=1025
+      - NOTIFICATION_EMAIL=admin@caronte.local
+    restart: unless-stopped
+
+  sftp-server:
+    image: atmoz/sftp
+    container_name: caronte_sftp_mock
+    ports:
+      - "2222:22"
+    volumes:
+      - ./sftp_keys/id_rsa.pub:/home/caronte_test/.ssh/keys/id_rsa.pub:ro
+      - caronte_sftp_data:/home/caronte_test/upload
+    command: caronte_test:password:1001:1001:upload
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: caronte_mail_mock
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    restart: unless-stopped
+
+volumes:
+  caronte_data:
+  caronte_sftp_data:

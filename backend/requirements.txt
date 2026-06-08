@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy
+oracledb
+pandas
+pyarrow
+azure-storage-blob
+apscheduler
+python-multipart
+paramiko
+openpyxl

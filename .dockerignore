@@ -1,0 +1,17 @@
+# Ignora le dipendenze locali
+node_modules/
+__pycache__/
+*.pyc
+.env
+.venv
+venv/
+env/
+
+# Ignora i file di build locali del frontend
+frontend/dist/
+
+# Ignora il database locale (vogliamo che il container abbia il suo o usi un volume)
+backend/caronte_state.db
+
+# Ignora i log locali
+*.log
